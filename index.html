@@ -1,1285 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devika N D - AI/ML Engineer & Developer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #ff3e7f;
-            --gray-light: #f5f5f5;
-            --gray-medium: #e0e0e0;
-            --gray-dark: #333333;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--secondary);
-            color: var(--primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            position: relative;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo a {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: 1px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 1rem;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover {
-            color: var(--accent);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .nav-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary);
-            margin: 3px 0;
-            transition: var(--transition);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, var(--primary) 0%, #333 100%);
-            color: var(--secondary);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            
-    background: 
-        linear-gradient(135deg, var(--primary) 0%, #333 100%),
-        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.03) 10px, rgba(255,255,255,0.03) 20px);
-
-            background-size: 200px;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(-200px, -200px); }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .highlight {
-            color: var(--accent);
-            position: relative;
-            display: inline-block;
-        }
-
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background-color: var(--accent);
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .hero-subtitle {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            opacity: 0.9;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.8;
-            line-height: 1.8;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--secondary);
-        }
-
-        .btn-primary:hover {
-            background: transparent;
-            border-color: var(--accent);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 62, 127, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--secondary);
-            border-color: var(--secondary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--secondary);
-            color: var(--primary);
-            transform: translateY(-3px);
-        }
-
-        .hero-social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--secondary);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.2rem;
-        }
-
-        .social-link:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 62, 127, 0.3);
-        }
-
-        /* About Section */
-        .about {
-            background: var(--gray-light);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--gray-dark);
-            line-height: 1.8;
-        }
-
-        .about-stats {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-            flex: 1;
-        }
-
-        .stat h3 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat p {
-            color: var(--gray-dark);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-
-        /* Achievements Section */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .achievement-card {
-            background: var(--secondary);
-            padding: 30px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid var(--gray-medium);
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .achievement-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent);
-        }
-
-        .achievement-card h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .achievement-card p {
-            color: var(--gray-dark);
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        /* Experience Section */
-        .experience {
-            background: var(--gray-light);
-        }
-
-        .experience-tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--gray-medium);
-        }
-
-        .tab-btn {
-            padding: 12px 25px;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--gray-dark);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .tab-btn.active {
-            color: var(--accent);
-        }
-
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        .tab-btn:hover {
-            color: var(--accent);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .experience-card {
-            background: var(--secondary);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border-left: 4px solid var(--accent);
-        }
-
-        .experience-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .experience-card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .experience-card h4 {
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 15px;
-        }
-
-        .experience-card p {
-            color: var(--gray-dark);
-            line-height: 1.6;
-        }
-
-        .experience-date {
-            display: inline-block;
-            background: var(--gray-light);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-
-        .project-card {
-            background: var(--secondary);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border: 1px solid var(--gray-medium);
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-image {
-            height: 180px;
-            background: linear-gradient(135deg, var(--primary) 0%, #333 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 2.5rem;
-        }
-
-        .project-tag {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: var(--secondary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .project-content {
-            padding: 25px;
-        }
-
-        .project-content h3 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .project-content p {
-            color: var(--gray-dark);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .project-tech span {
-            background: var(--gray-light);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--gray-light);
-            border-radius: 50%;
-            color: var(--primary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .project-link:hover {
-            background: var(--accent);
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Skills Section */
-        .skills {
-            background: var(--gray-light);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .skill-category {
-            background: var(--secondary);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-category h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
-        }
-
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .skill-item {
-            background: var(--gray-light);
-            color: var(--primary);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border: 1px solid var(--gray-medium);
-            transition: var(--transition);
-        }
-
-        .skill-item:hover {
-            background: var(--accent);
-            color: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-info p {
-            font-size: 1.1rem;
-            color: var(--gray-dark);
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 12px 25px;
-            border-radius: 30px;
-            transition: var(--transition);
-            background: var(--gray-light);
-            width: 100%;
-            max-width: 350px;
-            justify-content: center;
-        }
-
-        .contact-link:hover {
-            background: var(--accent);
-            color: var(--secondary);
-            transform: translateX(10px);
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary);
-            color: var(--secondary);
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .footer-links a {
-            color: var(--secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .achievements-grid,
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: var(--secondary);
-                padding: 20px;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-menu.active {
-                display: flex;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-            }
-
-            .hero-subtitle {
-                font-size: 1.5rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .about-content {
-                flex-direction: column;
-            }
-
-            .about-stats {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer .container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer-links {
-                gap: 15px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .achievements-grid,
-            .projects-grid,
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Devika N D | AI & ML Engineer</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(120deg, #f8f9fa, #eef3ff);
+    }
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+    .skill-bar {
+      height: 8px;
+      background: #e9ecef;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .skill-bar span {
+      display: block;
+      height: 100%;
+      background: #0d6efd;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      transition: 0.3s;
+    }
+    footer {
+      background: #0d6efd;
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="container nav-container">
-            <div class="nav-logo">
-                <a href="#home">DEVND</a>
-            </div>
-            <div class="nav-menu">
-                <a href="#about" class="nav-link">About</a>
-                <a href="#achievements" class="nav-link">Achievements</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-            <div class="nav-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Devika N D</a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <h1 class="fw-bold">Devika N D</h1>
+        <h4 class="text-primary mb-3">AI & Machine Learning Engineer</h4>
+        <p>
+          Building intelligent systems in healthcare, computer vision, and applied machine learning.
+          Passionate about research-grade AI pipelines and real-world deployment.
+        </p>
+        <a href="resume.pdf" class="btn btn-primary me-2">Download Resume</a>
+        <a href="https://github.com/Devika2605" class="btn btn-outline-dark me-2" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/devikand/" class="btn btn-outline-primary" target="_blank">LinkedIn</a>
+      </div>
+      <div class="col-md-5 text-center">
+        <img src="your-photo.jpg" class="img-fluid rounded-circle shadow" width="250" alt="Devika">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">About Me</h2>
+    <p class="text-center">
+      AI & ML undergraduate with hands-on experience in deep learning, medical imaging,
+      and applied machine learning systems. Experienced in building end-to-end AI pipelines,
+      healthcare-focused applications, and production-ready web platforms. Actively involved
+      in research, hackathons, and technical leadership roles.
+    </p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center">Skills</h2>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h6>Python / AI Development</h6>
+        <div class="skill-bar mb-3"><span style="width: 90%"></span></div>
+
+        <h6>TensorFlow / PyTorch / MONAI</h6>
+        <div class="skill-bar mb-3"><span style="width: 85%"></span></div>
+
+        <h6>Computer Vision (YOLOv5, OpenCV)</h6>
+        <div class="skill-bar mb-3"><span style="width: 80%"></span></div>
+      </div>
+
+      <div class="col-md-6">
+        <h6>Web Development (HTML, CSS, Bootstrap)</h6>
+        <div class="skill-bar mb-3"><span style="width: 85%"></span></div>
+
+        <h6>Backend (PHP, Django, Node.js)</h6>
+        <div class="skill-bar mb-3"><span style="width: 75%"></span></div>
+
+        <h6>Tools (Git, VS Code, Colab)</h6>
+        <div class="skill-bar mb-3"><span style="width: 85%"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-5">
+  <div class="container">
+    <h2 class="section-title text-center">Projects</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card project-card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>EpigenEase™</h5>
+            <p>
+              AI-powered health risk prediction system with multilingual chatbot,
+              disease-specific forecasting, and offline PWA support.
+            </p>
+            <a href="#" class="btn btn-sm btn-primary">Case Study</a>
+          </div>
         </div>
-    </nav>
+      </div>
 
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    Hi, I'm <span class="highlight">Devika N D</span>
-                </h1>
-                <h2 class="hero-subtitle">
-                    AI & ML Student 
-                </h2>
-                <p class="hero-description">
-                    AI & ML undergraduate passionate about building intelligent, user-centric solutions.  
-Skilled in full-stack development, data science, and Machine Learning.  
-Eager to contribute to innovative AI projects while continuously growing skills.
-
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                </div>
-                <div class="hero-social">
-                    <a href="mailto:devikashetty2716@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/devikand/" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/Devika2605" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
+      <div class="col-md-4">
+        <div class="card project-card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>Medical Image Segmentation (MONAI)</h5>
+            <p>
+              Deep learning pipelines for MRI/X-ray segmentation using PyTorch & MONAI
+              with Grad-CAM visualizations.
+            </p>
+            <a href="#" class="btn btn-sm btn-primary">GitHub</a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>
-                        I am a forward-thinking B.E. student specializing in Artificial Intelligence and Machine Learning at 
-                        Jawaharlal Nehru New College of Engineering. My journey is driven by a passion for creating technology 
-                        that serves a real-world purpose.
-                    </p>
-                    <p>
-                        With hands-on experience from national hackathons to live web deployments and AICTE internships with 
-                        industry leaders like Shell and IBM, I've cultivated a blend of technical proficiency, creative 
-                        problem-solving, and teamwork.
-                    </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <h3>5+</h3>
-                            <p>Projects Completed</p>
-                        </div>
-                        <div class="stat">
-                            <h3>3+</h3>
-                            <p>Internship program</p>
-                        </div>
-                        <div class="stat">
-                            <h3>2</h3>
-                            <p>Live Websites</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="col-md-4">
+        <div class="card project-card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>Weed & Crop Detection (YOLOv5)</h5>
+            <p>
+              Computer vision system for crop–weed classification with smart pesticide
+              spraying simulation.
+            </p>
+            <a href="#" class="btn btn-sm btn-primary">GitHub</a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <section id="achievements" class="achievements">
-        <div class="container">
-            <h2 class="section-title">Key Achievements</h2>
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">🏆</div>
-                    <h3>National Level Hackathon Runner-Up</h3>
-                    <p>CIT College, Tumkur (April 2025) - Team Leader</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">🌐</div>
-                    <h3>Live Website Development</h3>
-                    <p>Developed and deployed two official websites for National Public School Shivamogga and departmental portal
-                    </p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">📚</div>
-                    <h3>AICTE Internships</h3>
-                    <p>Completed internships with Shell India, IBM, Vault of Codes in Cloud Computing, ML and Prompt Engineering</p>
-                </div>
-                <div class="achievement-card">
-                    <div class="achievement-icon">⚡</div>
-                    <h3>Current Internship</h3>
-                    <p>Working at Vodafone and being a part of Pragati coherent 6 program</p>
-                </div>
-            </div>
+      <div class="col-md-4">
+        <div class="card project-card h-100 shadow-sm">
+          <div class="card-body">
+            <h5>NPS Shivamogga – Official Website</h5>
+            <p>
+              Fully responsive school website with PHP backend and dynamic content management.
+            </p>
+            <a href="https://npsshivamogga.co.in/" target="_blank" class="btn btn-sm btn-primary">Live Site</a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Experience & Internships</h2>
-            <div class="experience-tabs">
-                <button class="tab-btn active" data-tab="internships">Internships</button>
-                <button class="tab-btn" data-tab="leadership">Leadership</button>
-                <button class="tab-btn" data-tab="volunteer">Volunteer</button>
-            </div>
-            
-            <div class="tab-content active" id="internships">
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <span class="experience-date">2025</span>
-                        <h3>Lead Developer - Web Master</h3>
-                        <h4>ACM JNN Student Chapter</h4>
-                        <p>Designed, developed, and deployed official web portals using HTML, CSS, JavaScript, and PHP. The department portal is currently being used by the AI & ML department.
-                          <a href="http://jnnce.ac.in/jnnacms/" >Web Link</a>  
-                        </p>
-                    </div>
-                    <div class="experience-card">
-                        <span class="experience-date">Aug 2025</span>
-                        <h3>IBM x AICTE Internship</h3>
-                        <h4>Machine Learning Intern</h4>
-                        <p>Built a Nutrition Assistant Agent using RAG (Retrieval-Augmented Generation) and IBM Cloud platform.
-                            <a href="https://github.com/Devika2605/Nutrition_Agent" >repo Link</a> 
-                        </p>
-                    </div>
-                    <div class="experience-card">
-                        <span class="experience-date">Jul 2025</span>
-                        <h3>Shell India x AICTE Internship</h3>
-                        <h4>Cloud Computing Intern</h4>
-                        <p>Developed an EV Demand Prediction project using machine learning models and cloud technologies.
-                            <a href="https://github.com/Devika2605/EV_Vehicle_Charge_Demand" >repo Link</a> 
-                        </p>
-                    </div>
-                    <div class="experience-card">
-                        <span class="experience-date">2024-25</span>
-                        <h3>Vodafone Internship</h3>
-                        <h4>LLM Intern</h4>
-                        <p>Currently working as part of the Vodafone internship program, gaining industry experience in telecommunications and technology.
-                            <a href="https://github.com/Devika2605/VOIS_projects" >repo Link</a> 
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="leadership">
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <span class="experience-date">2025</span>
-                        <h3>Hackathon Team Lead</h3>
-                        <h4>National Level Hackathon</h4>
-                        <p>Led a team to Runner-Up position in national level hackathon, coordinating development efforts and project strategy.</p>
-                    </div>
-                    <div class="experience-card">
-                        <span class="experience-date">2024-25</span>
-                        <h3>Web Master</h3>
-                        <h4>ACM JNN Student Chapter</h4>
-                        <p>Responsible for maintaining and updating the official website, implementing new features and ensuring optimal performance.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="volunteer">
-                <div class="experience-grid">
-                    <div class="experience-card">
-                        <span class="experience-date">2024</span>
-                        <h3>IEEE Hackathon Volunteer</h3>
-                        <h4>State Level Event</h4>
-                        <p>Volunteered for hosting and built a web page for State level Hackathon held by IEEE Society in JNNCE.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-tag">AI/ML</div>
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>EpigenEase™</h3>
-                        <p>AI-Powered Epigenetic Health Forecasting with disease prediction, diagnosis, and nearest doctor suggestions. Integrated multilingual chatbot (SwasthyalBot) with Kannada and Hindi support.</p>
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>TensorFlow</span>
-                            <span>PWA</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            
-                        </div>
-                    </div>
-                </div>
+<!-- EXPERIENCE -->
+<section id="experience" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="section-title text-center">Experience & Achievements</h2>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-tag">Computer Vision</div>
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Weed and Crop Detection</h3>
-                        <p>AI-powered object detection model using YOLOv5 to accurately classify crops and weeds. Simulated smart pesticide spraying targeting only weeds for sustainable farming.</p>
-                        <div class="project-tech">
-                            <span>YOLOv5</span>
-                            <span>OpenCV</span>
-                            <span>Python</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Devika2605/crop_and_weed_detection" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">AI Intern – DScirbe (Real-time AI backend systems)</li>
+      <li class="list-group-item">Web Master – ACM JNNCE Student Chapter</li>
+      <li class="list-group-item">Runner-up – National Level Hackathon (Team Lead)</li>
+      <li class="list-group-item">Organizer – TechZone National-Level Technical Event</li>
+    </ul>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-tag">Full Stack</div>
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>NGO DBMS Management System</h3>
-                        <p>Full-stack system to manage NGOs, Donations, Events, Teams, and Volunteers. Implemented with React, Node.js, Express, and MySQL with Tailwind CSS.</p>
-                        <div class="project-tech">
-                            <span>React</span>
-                            <span>Node.js</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Devika2605/ngo_-js_fullstack-" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!-- CONTACT -->
+<section id="contact" class="py-5">
+  <div class="container text-center">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: <strong>devikashetty2716@gmail.com</strong></p>
+    <a href="https://github.com/Devika2605" class="btn btn-dark me-2" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/devikand/" class="btn btn-primary" target="_blank">LinkedIn</a>
+  </div>
+</section>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <div class="project-tag">Web Development</div>
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>School Web Suite</h3>
-                        <p>Published and currently used by National Public School Shivamogga. Backend interface to manage uploads, PDF magazines, and SQL-powered content with PHP and Bootstrap.</p>
-                        <div class="project-tech">
-                            <span>PHP</span>
-                            <span>Bootstrap</span>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://npsshivamogga.co.in/" class="project-link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- FOOTER -->
+<footer class="py-3 text-center">
+  <p class="mb-0">© 2026 Devika N D | AI & ML Portfolio</p>
+</footer>
 
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Python</span>
-                        <span class="skill-item">C</span>
-                        <span class="skill-item">Java</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Technologies</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">HTML/CSS</span>
-                        <span class="skill-item">JavaScript</span>
-                        <span class="skill-item">React</span>
-                        <span class="skill-item">Bootstrap</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Backend & Databases</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Node.js</span>
-                        <span class="skill-item">Express</span>
-                        <span class="skill-item">Django</span>
-                        <span class="skill-item">MySQL</span>
-                        <span class="skill-item">MongoDB</span>
-                        <span class="skill-item">PHP</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>AI/ML & Data Science</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">TensorFlow</span>
-                        <span class="skill-item">PyTorch</span>
-                        <span class="skill-item">Pandas</span>
-                        <span class="skill-item">NumPy</span>
-                        <span class="skill-item">OpenCV</span>
-                        <span class="skill-item">Keras</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Platforms</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Git</span>
-                        <span class="skill-item">VS Code</span>
-                        <span class="skill-item">Google Colab</span>
-                        <span class="skill-item">IBM Cloud</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Soft Skills</h3>
-                    <div class="skill-items">
-                        <span class="skill-item">Problem Solving</span>
-                        <span class="skill-item">Team Leadership</span>
-                        <span class="skill-item">Analytical Thinking</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>I'm always open to discussing new opportunities, innovative projects, or just chatting about technology.</p>
-                    <div class="contact-links">
-                        <a href="mailto:devika@netv2716@gmail.com" class="contact-link">
-                            <i class="fas fa-envelope"></i>
-                            devikashetty2716@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/in/devikand/" class="contact-link">
-                            <i class="fab fa-linkedin"></i>
-                            linkedin.com/indexika2605
-                        </a>
-                        <a href="https://github.com/Devika2605" class="contact-link">
-                            <i class="fab fa-github"></i>
-                            github.com/Devika2605
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Devika N D. All Rights Reserved.</p>
-            <div class="footer-links">
-                <a href="#home">Home</a>
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Navbar background on scroll
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = 'none';
-            }
-        });
-
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        if (navToggle) {
-            navToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
-        }
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                }
-            });
-        });
-
-        // Experience tabs functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(b => b.classList.remove('active'));
-                tabContents.forEach(c => c.classList.remove('active'));
-                
-                // Add active class to clicked button
-                btn.classList.add('active');
-                
-                // Show corresponding content
-                const tabId = btn.getAttribute('data-tab');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const animateElements = document.querySelectorAll('.achievement-card, .project-card, .skill-category, .experience-card');
-            
-            animateElements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(el);
-            });
-        });
-
-        // Current year for footer
-        document.addEventListener('DOMContentLoaded', function() {
-            const yearElement = document.querySelector('footer p');
-            if (yearElement) {
-                const currentYear = new Date().getFullYear();
-                yearElement.textContent = yearElement.textContent.replace('2025', currentYear);
-            }
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
